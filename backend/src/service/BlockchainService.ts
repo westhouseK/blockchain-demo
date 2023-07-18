@@ -163,7 +163,7 @@ export default class {
       sender_blockchain_address: senderBlockchainAddress,
       recipient_blockchain_address: recipientBlockchainAddress,
       value: value,
-    });
+    }) as unknown as Transaction;
     // マイニングの報酬の場合は後続の検証処理を実施しない
     if (senderBlockchainAddress === process.env.MINING_SENDER) {
       this._transactions.push(transaction);
@@ -173,7 +173,7 @@ export default class {
     if (
       await this.verifyTransactionSignature({
         signature: signature as string,
-        transaction: transactionStr as string,
+        transaction: transactionStr as unknown as string,
         senderPublicKey: senderPublicKey as string,
       })
     ) {
@@ -257,7 +257,7 @@ export default class {
       transactions: this._transactions,
       nonce: nonce,
       previous_hash: previousHash,
-    });
+    }) as unknown as Block;
     this._chain.push(block);
     this._transactions = [];
     // 他のブロックチェーンノードへ同期

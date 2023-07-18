@@ -5,10 +5,10 @@
     "node": "16.x >="
   },
   "scripts": {
-    "wallet_server": "ts-node -r tsconfig-paths/register server/WalletServer.ts --port 8080",
-    "blockchain_server:8001": "ts-node -r tsconfig-paths/register server/BlockchainServer.ts --port 8001",
-    "blockchain_server:8002": "ts-node -r tsconfig-paths/register server/BlockchainServer.ts --port 8002",
-    "blockchain_server:8003": "ts-node -r tsconfig-paths/register server/BlockchainServer.ts --port 8003"
+    "wallet_server": "ts-node -r tsconfig-paths/register src/server/WalletServer.ts --port 8080",
+    "blockchain_server:8001": "ts-node -r tsconfig-paths/register src/server/BlockchainServer.ts --port 8001",
+    "blockchain_server:8002": "ts-node -r tsconfig-paths/register src/server/BlockchainServer.ts --port 8002",
+    "blockchain_server:8003": "ts-node -r tsconfig-paths/register src/server/BlockchainServer.ts --port 8003"
   },
   "author": "",
   "devDependencies": {

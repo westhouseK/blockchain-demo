@@ -1,4 +1,4 @@
-export const sortedObjectByKey = (unsortedObject: { [s: string]: any }): { [s: string]: any } => {
+export const sortedObjectByKey = (unsortedObject: { [s: string]: any }) => {
   const sortedKeys = Object.keys(unsortedObject).sort();
   const sortedObject: { [s: string]: any } = {};
 
