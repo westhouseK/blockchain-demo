@@ -1,3 +1,6 @@
+import _ from "lodash";
+import Encoding from "encoding-japanese";
+
 export const sortedObjectByKey = (unsortedObject: { [s: string]: any }) => {
   const sortedKeys = Object.keys(unsortedObject).sort();
   const sortedObject: { [s: string]: any } = {};
@@ -9,8 +12,17 @@ export const sortedObjectByKey = (unsortedObject: { [s: string]: any }) => {
   return sortedObject;
 }
 
-export const convertToUtf8 = (input: string) => {
-  const encoder = new TextEncoder();
-  const utf8Array = encoder.encode(input);
-  return utf8Array;
-}
+export const convertToUtf8 = (value: string): string => {
+  let str = value;
+  // 文字列から文字コード値の配列に変換
+  const unicodeArray = Encoding.stringToCode(str);
+  const detectedEncoding = Encoding.detect(unicodeArray);
+  if (detectedEncoding !== "UTF8") {
+    const utf8Array = Encoding.convert(unicodeArray, {
+      to: "UTF8",
+      from: detectedEncoding as Encoding.Encoding,
+    });
+    return Encoding.codeToString(utf8Array);
+  }
+  return str;
+};

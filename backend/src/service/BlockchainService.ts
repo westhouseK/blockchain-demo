@@ -324,7 +324,8 @@ export default class {
         .then(() => {
           resolve(true);
         })
-        .catch(() => {
+        .catch((e) => {
+          console.log(e)
           resolve(false);
         });
     });
